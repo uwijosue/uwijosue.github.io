@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact — Josue Uwimana</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
+<body class="bg-slate-950 text-slate-100 antialiased">
+
+<header class="sticky top-0 z-50 bg-slate-950/80 backdrop-blur border-b border-slate-800">
+  <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
+    <a href="index.html" class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-cyan-400 to-violet-400 flex items-center justify-center font-bold text-slate-950">JU</div>
+      <div><div class="font-extrabold">Josue Uwimana</div><div class="text-xs text-slate-400">ML Engineer & AI for Healthcare Enthusiast</div></div>
+    </a>
+    <nav class="hidden md:flex gap-4 text-sm">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="experience.html" class="nav-link">Experience</a>
+      <a href="skills.html" class="nav-link">Skills</a>
+      <a href="education.html" class="nav-link">Education</a>
+      <a href="publications.html" class="nav-link">Publications</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <a href="assets/cv/Josue_Uwimana_CV.pdf" download class="px-3 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-sm">⬇ CV</a>
+    </div>
+  </div>
+</header>
+
+<main id="page" class="max-w-3xl mx-auto p-8 animate__animated animate__fadeInUp space-y-6">
+
+<h1 class="text-3xl font-bold mb-6">Contact</h1>
+<div class="bg-slate-900 p-6 rounded-xl">
+  <h2 class="font-semibold">Quick Contact</h2>
+  <p class="text-slate-400 mt-2">Click to copy email to clipboard or reach out via phone / socials.</p>
+  <div class="mt-4 flex gap-3">
+    <button id="copyEmail" class="px-4 py-2 bg-cyan-500 text-slate-900 rounded-lg">📋 Copy Email</button>
+    <a href="tel:+250 788 450 192" class="px-4 py-2 bg-slate-800 rounded-lg">📞 Call</a>
+    <a href="assets/cv/Josue_Uwimana_CV.pdf" download class="px-4 py-2 bg-violet-500 rounded-lg text-slate-900">⬇ Download CV</a>
+  </div>
+  <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
+    <a href="https://linkedin.com/in/uwijosue" target="_blank" class="px-3 py-3 bg-slate-800 rounded-lg text-center">LinkedIn</a>
+    <a href="https://twitter.com/uwijosue" target="_blank" class="px-3 py-3 bg-slate-800 rounded-lg text-center">Twitter</a>
+    <a href="https://facebook.com/uwijosue" target="_blank" class="px-3 py-3 bg-slate-800 rounded-lg text-center">Facebook</a>
+  </div>
+</div>
+<script>
+document.getElementById('copyEmail').addEventListener('click', async () => {
+  try {
+    await navigator.clipboard.writeText('uwimanajosue777@gmail.com');
+    alert('Email copied to clipboard!');
+  } catch (err) {
+    prompt('Copy this email:', 'uwimanajosue777@gmail.com');
+  }
+});
+</script>
+
+</main>
+
+<footer class="text-center text-slate-500 text-sm py-6 border-t border-slate-800 mt-10">© <span id="year"></span> Josue Uwimana</footer>
+
+
+<script>
+  document.getElementById('year')?.textContent = new Date().getFullYear();
+  (function(){ const links=document.querySelectorAll('.nav-link'); links.forEach(a=>{ const href=a.getAttribute('href'); const cur = location.pathname.split('/').pop(); if(href===cur || (href==='index.html' && (cur===''||cur==='index.html'))) a.classList.add('text-cyan-400','font-semibold'); }); })();
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a');
+    if(!a) return;
+    const href = a.getAttribute('href');
+    if(!href || href.startsWith('http') || href.startsWith('#') || href.endsWith('.pdf')) return;
+    e.preventDefault();
+    const page = document.getElementById('page');
+    if(page){ page.classList.remove('animate__fadeInUp'); page.classList.add('animate__animated','animate__fadeOutDown'); }
+    setTimeout(()=> window.location = href, 320);
+  });
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){ e.target.classList.add('animate__animated','animate__fadeInUp'); observer.unobserve(e.target); }
+    });
+  }, {threshold:0.12});
+  document.querySelectorAll('.animate-reveal').forEach(el => observer.observe(el));
+</script>
+
+</body></html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width,initial-scale=1" />
+      <title>Home — Josue Uwimana</title>
+      <script src="https://cdn.tailwindcss.com"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    </head>
+    <body class="bg-slate-950 text-slate-100 antialiased">
+
+<header class="sticky top-0 z-50 bg-slate-950/80 backdrop-blur border-b border-slate-800">
+  <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
+    <a href="index.html" class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-cyan-400 to-violet-400 flex items-center justify-center font-bold text-slate-950">JU</div>
+      <div><div class="font-extrabold">Josue Uwimana</div><div class="text-xs text-slate-400">ML Engineer & AI for Healthcare Enthusiast</div></div>
+    </a>
+    <nav class="hidden md:flex gap-4 text-sm">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="experience.html" class="nav-link">Experience</a>
+      <a href="skills.html" class="nav-link">Skills</a>
+      <a href="education.html" class="nav-link">Education</a>
+      <a href="publications.html" class="nav-link">Publications</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <a href="assets/cv/Josue_Uwimana_CV.pdf" download class="px-3 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-sm">⬇ CV</a>
+    </div>
+  </div>
+</header>
+
+    <main id="page" class="max-w-6xl mx-auto p-8 animate__animated animate__fadeInUp">
+
+<section class="grid md:grid-cols-2 gap-8 items-center">
+  <div>
+    <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">ML Engineer & AI for Healthcare Enthusiast</h1>
+    <p class="text-slate-400 mt-4 max-w-xl">I design autonomous intelligent systems and integrate AI into clinical and embedded environments. Researcher, author, and instructor focused on practical, deployable ML for health.</p>
+    <div class="mt-6 flex flex-wrap gap-3">
+      <a href="about.html" class="px-4 py-2 bg-cyan-500 text-slate-950 rounded-lg font-semibold shadow hover:scale-105 transition">Learn more</a>
+      <a href="experience.html" class="px-4 py-2 bg-violet-500 text-slate-950 rounded-lg font-semibold shadow hover:scale-105 transition">Experience</a>
+      <a href="assets/cv/Josue_Uwimana_CV.pdf" download class="px-4 py-2 bg-slate-800 text-slate-100 rounded-lg">Download CV</a>
+    </div>
+    <div class="mt-6 flex flex-wrap gap-2 text-sm text-slate-400">
+      <span class="inline-flex items-center gap-2 px-3 py-1 bg-slate-800 rounded-full">AI4Health</span>
+      <span class="inline-flex items-center gap-2 px-3 py-1 bg-slate-800 rounded-full">Autonomous Systems</span>
+      <span class="inline-flex items-center gap-2 px-3 py-1 bg-slate-800 rounded-full">Biomedical</span>
+    </div>
+  </div>
+  <div class="rounded-2xl bg-gradient-to-br from-slate-900/60 to-slate-900/40 border border-slate-700 h-80 flex items-center justify-center overflow-hidden">
+    <img src="assets/img/avatar.jpg" alt="Josue Uwimana" class="object-cover h-full w-full md:w-auto md:h-80 rounded-xl transform hover:scale-105 transition" />
+  </div>
+</section>
+
+<section class="grid md:grid-cols-3 gap-4 mt-8">
+  <div class="bg-slate-900 p-6 rounded-xl shadow-lg animate-reveal" data-delay="0">
+    <div class="text-slate-400 text-sm">Conferences</div>
+    <div class="text-2xl font-bold mt-2">ICCD 2023 + posters</div>
+  </div>
+  <div class="bg-slate-900 p-6 rounded-xl shadow-lg animate-reveal" data-delay="100">
+    <div class="text-slate-400 text-sm">Book</div>
+    <div class="text-2xl font-bold mt-2">The Intelligent Shield (2024)</div>
+  </div>
+  <div class="bg-slate-900 p-6 rounded-xl shadow-lg animate-reveal" data-delay="200">
+    <div class="text-slate-400 text-sm">Teaching</div>
+    <div class="text-2xl font-bold mt-2">Embedded & ML courses</div>
+  </div>
+</section>
+
+    </main>
+
+<footer class="text-center text-slate-500 text-sm py-6 border-t border-slate-800 mt-10">© <span id="year"></span> Josue Uwimana</footer>
+
+
+<script>
+  document.getElementById('year')?.textContent = new Date().getFullYear();
+  (function(){ const links=document.querySelectorAll('.nav-link'); links.forEach(a=>{ const href=a.getAttribute('href'); const cur = location.pathname.split('/').pop(); if(href===cur || (href==='index.html' && (cur===''||cur==='index.html'))) a.classList.add('text-cyan-400','font-semibold'); }); })();
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a');
+    if(!a) return;
+    const href = a.getAttribute('href');
+    if(!href || href.startsWith('http') || href.startsWith('#') || href.endsWith('.pdf')) return;
+    e.preventDefault();
+    const page = document.getElementById('page');
+    if(page){ page.classList.remove('animate__fadeInUp'); page.classList.add('animate__animated','animate__fadeOutDown'); }
+    setTimeout(()=> window.location = href, 320);
+  });
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){ e.target.classList.add('animate__animated','animate__fadeInUp'); observer.unobserve(e.target); }
+    });
+  }, {threshold:0.12});
+  document.querySelectorAll('.animate-reveal').forEach(el => observer.observe(el));
+</script>
+
+
+    </body></html>

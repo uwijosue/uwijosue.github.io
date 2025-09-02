@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width,initial-scale=1" />
+      <title>Skills — Josue Uwimana</title>
+      <script src="https://cdn.tailwindcss.com"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    </head>
+    <body class="bg-slate-950 text-slate-100 antialiased">
+
+<header class="sticky top-0 z-50 bg-slate-950/80 backdrop-blur border-b border-slate-800">
+  <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
+    <a href="index.html" class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-cyan-400 to-violet-400 flex items-center justify-center font-bold text-slate-950">JU</div>
+      <div><div class="font-extrabold">Josue Uwimana</div><div class="text-xs text-slate-400">ML Engineer & AI for Healthcare Enthusiast</div></div>
+    </a>
+    <nav class="hidden md:flex gap-4 text-sm">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="experience.html" class="nav-link">Experience</a>
+      <a href="skills.html" class="nav-link">Skills</a>
+      <a href="education.html" class="nav-link">Education</a>
+      <a href="publications.html" class="nav-link">Publications</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <a href="assets/cv/Josue_Uwimana_CV.pdf" download class="px-3 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-sm">⬇ CV</a>
+    </div>
+  </div>
+</header>
+
+    <main id="page" class="max-w-6xl mx-auto p-8 animate__animated animate__fadeInUp">
+
+<h1 class="text-3xl font-bold mb-6">Skills</h1>
+<section class="bg-slate-900 p-6 rounded-xl mb-6 animate-reveal" data-delay="0">
+  <h2 class="text-xl font-semibold">Core</h2>
+  <div class="mt-4 flex flex-wrap gap-3"><span class='px-3 py-2 bg-slate-800 rounded-full'>Python</span> <span class='px-3 py-2 bg-slate-800 rounded-full'>C</span> <span class='px-3 py-2 bg-slate-800 rounded-full'>C++</span> <span class='px-3 py-2 bg-slate-800 rounded-full'>Java</span> <span class='px-3 py-2 bg-slate-800 rounded-full'>MATLAB</span> <span class='px-3 py-2 bg-slate-800 rounded-full'>SQL</span> <span class='px-3 py-2 bg-slate-800 rounded-full'>PostgreSQL</span> <span class='px-3 py-2 bg-slate-800 rounded-full'>MongoDB</span></div>
+</section>
+
+<section class="bg-slate-900 p-6 rounded-xl animate-reveal" data-delay="120">
+  <h2 class="text-xl font-semibold">Frameworks & Tools</h2>
+  <div class="mt-4 flex flex-wrap gap-3"><span class='px-3 py-2 bg-slate-800 rounded-full'>HTML</span> <span class='px-3 py-2 bg-slate-800 rounded-full'>CSS</span> <span class='px-3 py-2 bg-slate-800 rounded-full'>JavaScript</span> <span class='px-3 py-2 bg-slate-800 rounded-full'>Bootstrap</span> <span class='px-3 py-2 bg-slate-800 rounded-full'>React</span> <span class='px-3 py-2 bg-slate-800 rounded-full'>Node.js</span> <span class='px-3 py-2 bg-slate-800 rounded-full'>Express</span> <span class='px-3 py-2 bg-slate-800 rounded-full'>TensorFlow</span> <span class='px-3 py-2 bg-slate-800 rounded-full'>TensorFlow Lite</span> <span class='px-3 py-2 bg-slate-800 rounded-full'>TensorFlow.js</span> <span class='px-3 py-2 bg-slate-800 rounded-full'>PyTorch</span> <span class='px-3 py-2 bg-slate-800 rounded-full'>Jupyter</span> <span class='px-3 py-2 bg-slate-800 rounded-full'>PyCharm</span> <span class='px-3 py-2 bg-slate-800 rounded-full'>Docker</span> <span class='px-3 py-2 bg-slate-800 rounded-full'>Git</span></div>
+</section>
+
+    </main>
+
+<footer class="text-center text-slate-500 text-sm py-6 border-t border-slate-800 mt-10">© <span id="year"></span> Josue Uwimana</footer>
+
+
+<script>
+  document.getElementById('year')?.textContent = new Date().getFullYear();
+  (function(){ const links=document.querySelectorAll('.nav-link'); links.forEach(a=>{ const href=a.getAttribute('href'); const cur = location.pathname.split('/').pop(); if(href===cur || (href==='index.html' && (cur===''||cur==='index.html'))) a.classList.add('text-cyan-400','font-semibold'); }); })();
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a');
+    if(!a) return;
+    const href = a.getAttribute('href');
+    if(!href || href.startsWith('http') || href.startsWith('#') || href.endsWith('.pdf')) return;
+    e.preventDefault();
+    const page = document.getElementById('page');
+    if(page){ page.classList.remove('animate__fadeInUp'); page.classList.add('animate__animated','animate__fadeOutDown'); }
+    setTimeout(()=> window.location = href, 320);
+  });
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){ e.target.classList.add('animate__animated','animate__fadeInUp'); observer.unobserve(e.target); }
+    });
+  }, {threshold:0.12});
+  document.querySelectorAll('.animate-reveal').forEach(el => observer.observe(el));
+</script>
+
+
+    </body></html>

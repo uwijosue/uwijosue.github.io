@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width,initial-scale=1" />
+      <title>Education — Josue Uwimana</title>
+      <script src="https://cdn.tailwindcss.com"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    </head>
+    <body class="bg-slate-950 text-slate-100 antialiased">
+
+<header class="sticky top-0 z-50 bg-slate-950/80 backdrop-blur border-b border-slate-800">
+  <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
+    <a href="index.html" class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-cyan-400 to-violet-400 flex items-center justify-center font-bold text-slate-950">JU</div>
+      <div><div class="font-extrabold">Josue Uwimana</div><div class="text-xs text-slate-400">ML Engineer & AI for Healthcare Enthusiast</div></div>
+    </a>
+    <nav class="hidden md:flex gap-4 text-sm">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="experience.html" class="nav-link">Experience</a>
+      <a href="skills.html" class="nav-link">Skills</a>
+      <a href="education.html" class="nav-link">Education</a>
+      <a href="publications.html" class="nav-link">Publications</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <a href="assets/cv/Josue_Uwimana_CV.pdf" download class="px-3 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-sm">⬇ CV</a>
+    </div>
+  </div>
+</header>
+
+    <main id="page" class="max-w-6xl mx-auto p-8 animate__animated animate__fadeInUp">
+    <h1 class='text-3xl font-bold mb-6'>Education & Certifications</h1><div class='bg-slate-900 p-6 rounded-xl mb-4'><h3 class='font-semibold'>BSc (Hons) Electronics & Telecommunication Engineering</h3><div class='text-slate-400'>University of Rwanda — Sep 2016 – Nov 2022</div></div><section class='bg-slate-900 p-6 rounded-xl animate-reveal' data-delay='80'><h2 class='font-semibold'>Certifications</h2><ul class='list-disc ml-5 mt-3 text-slate-300'><li>TVET Trainer – Competence‑based Training & Assessment — RTTI, Rwanda Polytechnic (Aug 2023 – Feb 2024)</li><li>Machine Learning Certificate — Stanford University</li><li>BCI & Neurotech Masterclass: Python for Neuroscience — g.tec medical engineering GmbH</li><li>Python Essentials 1 & 2; JavaScript Essentials 1; C++ Essentials; Linux Essentials/Unhatched — Cisco Networking Academy</li><li>EEG/Signal Processing/Deep Learning (Python) for Neuroscience — Udemy</li></ul></section>
+    </main>
+
+<footer class="text-center text-slate-500 text-sm py-6 border-t border-slate-800 mt-10">© <span id="year"></span> Josue Uwimana</footer>
+
+
+<script>
+  document.getElementById('year')?.textContent = new Date().getFullYear();
+  (function(){ const links=document.querySelectorAll('.nav-link'); links.forEach(a=>{ const href=a.getAttribute('href'); const cur = location.pathname.split('/').pop(); if(href===cur || (href==='index.html' && (cur===''||cur==='index.html'))) a.classList.add('text-cyan-400','font-semibold'); }); })();
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a');
+    if(!a) return;
+    const href = a.getAttribute('href');
+    if(!href || href.startsWith('http') || href.startsWith('#') || href.endsWith('.pdf')) return;
+    e.preventDefault();
+    const page = document.getElementById('page');
+    if(page){ page.classList.remove('animate__fadeInUp'); page.classList.add('animate__animated','animate__fadeOutDown'); }
+    setTimeout(()=> window.location = href, 320);
+  });
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){ e.target.classList.add('animate__animated','animate__fadeInUp'); observer.unobserve(e.target); }
+    });
+  }, {threshold:0.12});
+  document.querySelectorAll('.animate-reveal').forEach(el => observer.observe(el));
+</script>
+
+
+    </body></html>
